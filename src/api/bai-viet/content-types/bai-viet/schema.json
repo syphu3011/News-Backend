@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bai_viets",
+  "info": {
+    "singularName": "bai-viet",
+    "pluralName": "bai-viets",
+    "displayName": "Bài viết",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ten_bai_viet": {
+      "type": "string"
+    },
+    "noi_dung": {
+      "type": "richtext"
+    },
+    "loai_bai_viet": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::loai-bai-viet.loai-bai-viet",
+      "inversedBy": "bai_viets"
+    },
+    "tac_gia": {
+      "type": "string"
+    },
+    "like_bai_viet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::like-bai-viet.like-bai-viet",
+      "mappedBy": "bai_viet"
+    }
+  }
+}

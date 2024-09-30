@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "loai_bai_viets",
+  "info": {
+    "singularName": "loai-bai-viet",
+    "pluralName": "loai-bai-viets",
+    "displayName": "Loại bài viết"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "loai": {
+      "type": "string"
+    },
+    "chi_tiet": {
+      "type": "richtext"
+    },
+    "bai_viets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bai-viet.bai-viet",
+      "mappedBy": "loai_bai_viet"
+    }
+  }
+}

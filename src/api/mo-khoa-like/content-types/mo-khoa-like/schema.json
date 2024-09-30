@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "mo_khoa_likes",
+  "info": {
+    "singularName": "mo-khoa-like",
+    "pluralName": "mo-khoa-likes",
+    "displayName": "Mở khóa like"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mo_like": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
