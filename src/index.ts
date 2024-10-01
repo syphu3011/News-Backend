@@ -31,15 +31,33 @@ export default {
       console.log("A user connected");
 
       socket.on("like", async (data, callback) => {
+        console.log('ủa')
         const isValid = await verify(data.rc_token);
-        if (isValid) {
+        console.log(isValid)
+        if (isValid && isValid.success && isValid.score >= 0.5) {
           const likeUpdate = await like(strapi, data.postId, data.cookie != '');
           // callback({ postId: data.postId, like:  likeUpdate}); // Cập nhật số lượng like
-          socket.broadcast.emit("likeUpdate", { postId: data.postId, like: likeUpdate });
+          socket.broadcast.emit(
+            "likeUpdate",
+            { postId: data.postId, like: likeUpdate }
+          );
+          socket.emit("likeUpdate", {
+            postId: data.postId,
+            like: likeUpdate,
+          });
+          callback(likeUpdate)
+        }
+        else {
+          // Gửi thông báo lỗi đến client
+          socket.emit("likeError", {
+            postId: data.postId,
+            message: "Like không hợp lệ!"
+          });
+          callback(-1);
         }
       });
 
-      socket.on("disconnect", () => {
+      socket.on("disconnect", (io) => {
         console.log("User disconnected");
       });
     });

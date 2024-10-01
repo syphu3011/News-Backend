@@ -536,7 +536,7 @@ export interface ApiLikeBaiVietLikeBaiViet extends Struct.CollectionTypeSchema {
   };
   pluginOptions: {
     'content-manager': {
-      visible: false;
+      visible: true;
     };
     'content-type-builder': {
       visible: true;
